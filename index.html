@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learner - Online Learning Platform</title>
+  <link rel="stylesheet" href="styles.css">
+    <!-- Include Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+  <header id="main-header">
+    <div class="logo-container">
+        <a href="https://www.learners.linkpc.net/home" aria-label="Learners - Online Learning Platform">
+            <svg width="150px" height="150px" viewBox="-6.4 -6.4 76.80 76.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet" fill="#b2a9a9" transform="rotate(0)matrix(1, 0, 0, 1, 0, 0)" stroke="#b2a9a9" stroke-width="0.768">
+
+                <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(32,32), scale(0)">
+                
+                <path transform="translate(-6.4, -6.4), scale(2.4)" d="M16,31.62033992446959C18.28897501075394,31.773430305333054,20.27306146151504,30.159790066884575,22.324119090108578,29.132168605082036C24.35039408862835,28.116963743470873,27.214386193421756,27.707956441481556,28.029584996429904,25.593273913951876C28.92473523039568,23.271191800611707,26.327124582589413,20.873506011966427,26.465661471249703,18.38871893598916C26.573824707929056,16.448711366916594,28.904486691377937,15.030124528210298,28.726398355086065,13.095282622962069C28.550616138383248,11.185495569212383,27.03936440912606,9.590297130921613,25.545165512120292,8.387984511605984C24.146218506558967,7.262316675877617,22.03839208588399,7.548641171616402,20.562395612232578,6.52608789157131C18.734675583516864,5.259864601928984,18.220582165801716,1.6616403440808956,16,1.7752042799256742C13.71430514402048,1.8920981773831829,13.536053847095422,5.675017315608569,11.656932197427226,6.981526781193232C10.166696973576746,8.017652582975208,7.769705991805569,7.132974737574778,6.470745238668277,8.400672911957004C5.190960622198502,9.649656468991168,5.0714855858407155,11.700801488148725,4.990800595481307,13.487222077658682C4.916171039123508,15.139571237889035,5.789948348532263,16.639508465317967,6.024682698509308,18.27680107903641C6.281484431501214,20.068015618616425,5.767058831827129,21.94265759963684,6.443644998335351,23.620938808540817C7.192122842611081,25.47754830413808,8.535551360987128,27.027718536048972,10.070549939281907,28.31262992098825C11.828033483387404,29.783778263792072,13.713160935082328,31.467392399146288,16,31.62033992446959" fill="#6a7b81" strokewidth="0"/>
+                
+                </g>
+                
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#b8b7b7" stroke-width="2.6879999999999997">
+                
+                <path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm11.275 44.508h-20.55V17.492h6.063v23.799h14.488v5.217z" fill="#000000"/>
+                
+                </g>
+                
+                <g id="SVGRepo_iconCarrier">
+                
+                <path d="M32 2C15.432 2 2 15.432 2 32s13.432 30 30 30s30-13.432 30-30S48.568 2 32 2zm11.275 44.508h-20.55V17.492h6.063v23.799h14.488v5.217z" fill="#000000"/>
+                
+                </g>
+                
+                </svg>
+        </a>
+    </div>
+    <div class="search-wrapper">
+        <span class="search-icon" aria-hidden="true">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.342a6.5 6.5 0 1 0-1.136 1.136l3.16 3.161a1 1 0 0 0 1.415-1.415l-3.16-3.161zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </span>
+        <input type="text" class="search-input" aria-label="Search" placeholder="Search..." />
+        <button class="clear-button" aria-label="Clear search" style="display:none;">&times;</button>
+        <ul class="suggestions" role="listbox" aria-labelledby="search-label"></ul>
+    </div>
+
+    <nav class="navbar">
+        <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-menu" aria-hidden="true">
+            <li class="nav-item"><a href="#">Home</a></li>
+            <li class="nav-item dropdown" tabindex="0">
+                <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Courses</a>
+                <ul class="submenu" aria-hidden="true">
+                    <li><a href="#">Web Development</a></li>
+                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">AI & Machine Learning</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#">About Us</a></li>
+            <li class="nav-item"><a href="#">Contact</a></li>
+        </ul>
+
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+          <input type="checkbox" id="theme-toggle" aria-label="Toggle dark/light theme" />
+          <label class="toggle-label" for="theme-toggle"></label>
+      </div>
+      
+    </nav>
+</header>
+
+
+<hr class="hr-3d">
+
+<!-- Background Animation Canvas -->
+<canvas id="backgroundCanvas"></canvas>
+      
+      <main>
+<!-- Hero Section HTML -->
+<section class="hero" aria-label="Hero Section">
+    <div class="hero-background">
+        <video autoplay muted loop class="video-bg">
+            <source src="path/to/your/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content" role="document">
+        <h1 class="hero-title">Welcome to Book Hub</h1>
+        <p class="hero-subtitle">Your gateway to an endless world of books.</p>
+        <div class="hero-icons">
+            <span class="icon"><i class="fas fa-book-open"></i></span>
+            <span class="icon"><i class="fas fa-users"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+        </div>
+        <a href="#cta" class="cta-button" role="button" aria-label="Get Started">Get Started</a>
+        <div class="lottie-animation" aria-hidden="true"></div> <!-- Placeholder for Lottie -->
+    </div>
+</section>  
+
+<hr class="hr-3d">
+
+<!-- about section-->
+
+<section id="about" class="about-section">
+    <h2 class="about-title">About Us</h2>
+    <div class="cards-container">
+        <div class="card" data-text="Our Mission">
+            <div class="icon"><i class="fas fa-bullseye"></i></div>
+            <h3 class="card-title typewriter" data-text="Our Mission">Our Mission</h3>
+            <p>To empower learners and promote a culture of knowledge sharing.</p>
+        </div>
+        <div class="card" data-text="Our Vision">
+            <div class="icon"><i class="fas fa-eye"></i></div>
+            <h3 class="card-title typewriter" data-text="Our Vision">Our Vision</h3>
+            <p>Creating a world where everyone has access to quality learning resources.</p>
+        </div>
+        <div class="card" data-text="Our Values">
+            <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+            <h3 class="card-title typewriter" data-text="Our Values">Our Values</h3>
+            <p>Integrity, Inclusivity, and Innovation in all our endeavors.</p>
+        </div>
+        <div class="card" data-text="What We Do">
+            <div class="icon"><i class="fas fa-book-open"></i></div>
+            <h3 class="card-title typewriter" data-text="What We Do">What We Do</h3>
+            <p>We offer a range of educational resources, tools, and platforms to support lifelong learning.</p>
+        </div>
+        <div class="card" data-text="Join Us">
+            <div class="icon"><i class="fas fa-user-plus"></i></div>
+            <h3 class="card-title typewriter" data-text="Join Us">Join Us</h3>
+            <p>Become part of our community and contribute to the future of education.</p>
+        </div>
+        <div class="card" data-text="Get Involved">
+            <div class="icon"><i class="fas fa-comments"></i></div>
+            <h3 class="card-title typewriter" data-text="Get Involved">Get Involved</h3>
+            <p>Collaborate with us on projects and initiatives that matter to you.</p>
+        </div>
+    </div>
+</section>
+
+<hr class="hr-3d">
+
+<section id="icon-animation" class="icon-animation-section">
+    <h2 class="section-title">Our Services</h2>
+    <div class="icon-gallery">
+        <div class="icon-container">
+            <div class="icon-wrapper">
+                <i class="fas fa-lightbulb icon"></i>
+            </div>
+            <div class="caption">
+                Innovative Solutions
+            </div>
+        </div>
+        <div class="icon-container">
+            <div class="icon-wrapper">
+                <i class="fas fa-paint-brush icon"></i>
+            </div>
+            <div class="caption">
+                Creative Design
+            </div>
+        </div>
+        <div class="icon-container">
+            <div class="icon-wrapper">
+                <i class="fas fa-users icon"></i>
+            </div>
+            <div class="caption">
+                Engaging Experiences
+            </div>
+        </div>
+        <div class="icon-container">
+            <div class="icon-wrapper">
+                <i class="fas fa-chart-line icon"></i>
+            </div>
+            <div class="caption">
+                Dynamic Strategies
+            </div>
+        </div>
+    </div>
+    <p class="additional-info">
+        Our team pushes the boundaries with creativity and expertise, providing dynamic solutions that resonate. Let’s create impactful experiences together!
+    </p>
+</section>
+
+<hr class="hr-3d">
+
+
+<!-- Filter Section -->
+<section id="course-filter-section">
+    <h2>Filter Courses</h2>
+    <div class="filter-wrapper">
+        <div class="filter-container">
+            <label for="category-filter">
+                <i class="fas fa-tags"></i> Category
+            </label>
+            <select id="category-filter">
+                <option value="">Select Category</option>
+                <option value="development">Development</option>
+                <option value="design">Design</option>
+                <option value="marketing">Marketing</option>
+                <option value="business">Business</option>
+            </select>
+        </div>
+        <div class="filter-container">
+            <label for="difficulty-filter">
+                <i class="fas fa-graduation-cap"></i> Difficulty Level
+            </label>
+            <select id="difficulty-filter">
+                <option value="">Select Difficulty</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+        </div>
+    </div>
+    <button id="reset-filters">Reset Filters</button>
+    <hr class="divider">
+</section>
+
+
+
+<section id="courses">
+    <h2>Available Courses</h2>
+    <button id="toggle-courses" class="toggle-button">
+        <i class="fas fa-book"></i> Show Available Courses
+    </button>
+    <div id="course-container" style="display: none;">
+        <div id="course-list">
+            <!-- Development Courses -->
+            <div class="course-card" data-category="development" data-difficulty="beginner">
+                <h3><i class="fas fa-code"></i> Web Development Bootcamp</h3>
+                <p>This course covers HTML, CSS, and JavaScript. Perfect for beginners!</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 10 weeks</p>
+                    <p>Instructor: Jane Doe</p>
+                    <p>Price: $299</p>
+                        <div class="course-overview">
+                            <h4>What is Web Development?</h4>
+                            <p>Web development is the process of creating and maintaining websites. It encompasses web design, programming, publishing, and database management to build user-friendly web platforms.</p>
+                            
+                            <h4>Course Structure</h4>
+                            <ul>
+                                <li class="course-item"><i class="fas fa-code"></i><span>Introduction to HTML and CSS</span></li>
+                                <li class="course-item"><i class="fas fa-palette"></i><span>Responsive Web Design</span></li>
+                                <li class="course-item"><i class="fas fa-laptop-code"></i><span>JavaScript Fundamentals</span></li>
+                                <li class="course-item"><i class="fas fa-cubes"></i><span>Frontend Frameworks: React, Vue.js</span></li>
+                                <li class="course-item"><i class="fas fa-server"></i><span>Backend Basics: Node.js and Express</span></li>
+                                <li class="course-item"><i class="fas fa-database"></i><span>Databases and SQL</span></li>
+                                <li class="course-item"><i class="fas fa-git-alt"></i><span>Version Control with Git</span></li>
+                                <li class="course-item"><i class="fas fa-cloud-upload-alt"></i><span>Deployment and Hosting</span></li>
+                            </ul>
+                            
+                            <h4>Web Development Techniques</h4>
+                            <p>This course covers foundational techniques for web development, including utilizing essential HTML tags, managing layouts with CSS, and incorporating dynamic interactions through JavaScript.</p>
+                        </div>                        
+                        <h4>Different Tags and Their Uses</h4>
+                        <p>This course will cover essential HTML tags like <code>&lt;div&gt;</code>, <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code>, and many others, along with their appropriate usage in building web pages.</p>
+                    </div>                    
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="development" data-difficulty="intermediate">
+                <h3><i class="fas fa-laptop-code"></i> Intermediate Web Development</h3>
+                <p>Enhance your web development skills with advanced techniques and frameworks.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 8 weeks</p>
+                    <p>Instructor: John Smith</p>
+                    <p>Price: $399</p>
+                    <div class="course-overview">
+                        <h4>What is Intermediate Web Development?</h4>
+                        <p>This course builds upon foundational web development knowledge by diving deeper into advanced frontend and backend technologies, essential for creating modern and dynamic web applications.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-layer-group"></i><span>Advanced CSS Grid and Flexbox</span></li>
+                            <li class="course-item"><i class="fas fa-rocket"></i><span>JavaScript ES6+ Features</span></li>
+                            <li class="course-item"><i class="fas fa-sync-alt"></i><span>API Integration and AJAX</span></li>
+                            <li class="course-item"><i class="fas fa-lock"></i><span>Authentication and Security</span></li>
+                            <li class="course-item"><i class="fas fa-cloud"></i><span>Cloud Deployment with Heroku</span></li>
+                            <li class="course-item"><i class="fas fa-project-diagram"></i><span>Modular Code Architecture</span></li>
+                            <li class="course-item"><i class="fas fa-database"></i><span>Introduction to NoSQL Databases</span></li>
+                            <li class="course-item"><i class="fas fa-chart-pie"></i><span>Performance Optimization Techniques</span></li>
+                        </ul>
+                        
+                        <h4>Web Development Mastery</h4>
+                        <p>This course covers advanced web development techniques to enhance your skills, focusing on performance, maintainability, and best practices for full-stack applications.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="development" data-difficulty="advanced">
+                <h3><i class="fas fa-user-graduate"></i> Full Stack Development</h3>
+                <p>Become a full stack developer by mastering both front-end and back-end technologies.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 12 weeks</p>
+                    <p>Instructor: Alice Brown</p>
+                    <p>Price: $499</p>
+                    <div class="course-overview">
+                        <h4>What is Full Stack Development?</h4>
+                        <p>Full Stack Development involves mastering both frontend and backend technologies to build complete web applications from scratch, ensuring seamless user experiences and efficient server management.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-code"></i><span>Frontend Development (HTML, CSS, JS)</span></li>
+                            <li class="course-item"><i class="fa-brands fa-react"></i><span>React and Frontend Frameworks</span></li>
+                            <li class="course-item"><i class="fas fa-server"></i><span>Backend Development (Node.js, Express)</span></li>
+                            <li class="course-item"><i class="fas fa-database"></i><span>Database Management (SQL/NoSQL)</span></li>
+                            <li class="course-item"><i class="fas fa-network-wired"></i><span>RESTful API Development</span></li>
+                            <li class="course-item"><i class="fas fa-user-shield"></i><span>Authentication and Authorization</span></li>
+                            <li class="course-item"><i class="fas fa-docker"></i><span>DevOps and Docker</span></li>
+                            <li class="course-item"><i class="fas fa-tools"></i><span>Testing and Debugging</span></li>
+                        </ul>
+                        
+                        <h4>Complete Application Development</h4>
+                        <p>This course equips learners with the skills to design and develop full-stack applications, integrating various frontend and backend technologies into one cohesive project.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+
+            <!-- Design Courses -->
+            <div class="course-card" data-category="design" data-difficulty="beginner">
+                <h3><i class="fas fa-paint-brush"></i> Graphic Design Basics</h3>
+                <p>Learn the fundamentals of graphic design and software tools.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 6 weeks</p>
+                    <p>Instructor: Lisa Green</p>
+                    <p>Price: $199</p>
+                    <div class="course-overview">
+                        <h4>What is Graphic Design?</h4>
+                        <p>Graphic design is the art of visual communication through the use of typography, imagery, and color to convey messages effectively across digital and print media.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-paint-brush"></i><span>Introduction to Design Principles</span></li>
+                            <li class="course-item"><i class="fas fa-font"></i><span>Typography Basics</span></li>
+                            <li class="course-item"><i class="fas fa-fill-drip"></i><span>Color Theory and Usage</span></li>
+                            <li class="course-item"><i class="fas fa-images"></i><span>Image Editing with Adobe Photoshop</span></li>
+                            <li class="course-item"><i class="fas fa-object-ungroup"></i><span>Vector Graphics with Adobe Illustrator</span></li>
+                            <li class="course-item"><i class="fa-solid fa-table-layout"></i><span>Layout Design and Composition</span></li>
+                            <li class="course-item"><i class="fas fa-print"></i><span>Print Design Basics</span></li>
+                            <li class="course-item"><i class="fas fa-palette"></i><span>Creating Digital Graphics</span></li>
+                        </ul>
+                        
+                        <h4>Core Design Skills</h4>
+                        <p>This course provides essential knowledge in graphic design, teaching how to effectively use design tools to create visually appealing and professional graphics.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="design" data-difficulty="intermediate">
+                <h3><i class="fas fa-laptop"></i> UI/UX Design Fundamentals</h3>
+                <p>Understand the principles of UI/UX design and create user-friendly interfaces.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 8 weeks</p>
+                    <p>Instructor: Mark Lee</p>
+                    <p>Price: $299</p>
+                    <div class="course-overview">
+                        <h4>What is UI/UX Design?</h4>
+                        <p>UI/UX Design focuses on improving user interaction and experience with digital products by making interfaces intuitive, aesthetically pleasing, and functional.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-user"></i><span>Introduction to User Experience Design</span></li>
+                            <li class="course-item"><i class="fas fa-drafting-compass"></i><span>User Interface Design Principles</span></li>
+                            <li class="course-item"><i class="fas fa-layer-group"></i><span>Wireframing and Prototyping</span></li>
+                            <li class="course-item"><i class="fas fa-bezier-curve"></i><span>Designing for Mobile Devices</span></li>
+                            <li class="course-item"><i class="fas fa-ruler"></i><span>UI Design with Figma and Sketch</span></li>
+                            <li class="course-item"><i class="fas fa-vial"></i><span>User Testing and Feedback</span></li>
+                            <li class="course-item"><i class="fas fa-brain"></i><span>Interaction Design and Micro-interactions</span></li>
+                            <li class="course-item"><i class="fas fa-analytics"></i><span>Usability and Accessibility</span></li>
+                        </ul>
+                        
+                        <h4>Key UI/UX Design Concepts</h4>
+                        <p>Through this course, you'll develop core skills in designing user interfaces and improving user experiences, focusing on the practical application of UI/UX design principles.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="design" data-difficulty="advanced">
+                <h3><i class="fas fa-search"></i> Advanced UX Research Methods</h3>
+                <p>Explore advanced techniques for conducting user research and usability testing.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 10 weeks</p>
+                    <p>Instructor: Emma White</p>
+                    <p>Price: $399</p>
+                    <div class="course-overview">
+                        <h4>What is UX Research?</h4>
+                        <p>UX Research involves understanding user behaviors and needs through various methodologies, ensuring that digital products are designed with the user in mind.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-user-circle"></i><span>User Personas and Journey Mapping</span></li>
+                            <li class="course-item"><i class="fas fa-microscope"></i><span>Qualitative and Quantitative Research</span></li>
+                            <li class="course-item"><i class="fas fa-lightbulb"></i><span>Design Thinking Workshops</span></li>
+                            <li class="course-item"><i class="fas fa-chart-line"></i><span>Data Analysis and Metrics</span></li>
+                            <li class="course-item"><i class="fas fa-chart-pie"></i><span>Usability Testing Techniques</span></li>
+                            <li class="course-item"><i class="fas fa-chart-bar"></i><span>Advanced Analytics Tools</span></li>
+                            <li class="course-item"><i class="fas fa-users"></i><span>Conducting Focus Groups</span></li>
+                            <li class="course-item"><i class="fas fa-search"></i><span>Field Research and Ethnography</span></li>
+                        </ul>
+                        
+                        <h4>Research-Driven Design</h4>
+                        <p>This course focuses on advanced user research methods, equipping you with the skills to gather data, analyze user behavior, and make informed design decisions.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+
+            <!-- Marketing Courses -->
+            <div class="course-card" data-category="marketing" data-difficulty="beginner">
+                <h3><i class="fas fa-bullhorn"></i> Marketing 101</h3>
+                <p>An introduction to marketing concepts and strategies for beginners.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 4 weeks</p>
+                    <p>Instructor: Chris Black</p>
+                    <p>Price: $149</p>
+                    <div class="course-overview">
+                        <h4>What is Marketing?</h4>
+                        <p>Marketing involves promoting and selling products or services, focusing on customer needs and preferences to develop strategies that boost brand awareness and sales.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-bullhorn"></i><span>Introduction to Marketing Principles</span></li>
+                            <li class="course-item"><i class="fas fa-users"></i><span>Understanding Consumer Behavior</span></li>
+                            <li class="course-item"><i class="fas fa-lightbulb"></i><span>Branding and Positioning</span></li>
+                            <li class="course-item"><i class="fas fa-chart-line"></i><span>Marketing Strategies and Campaigns</span></li>
+                            <li class="course-item"><i class="fas fa-envelope"></i><span>Email and Social Media Marketing</span></li>
+                            <li class="course-item"><i class="fas fa-chart-pie"></i><span>Market Research and Analysis</span></li>
+                            <li class="course-item"><i class="fas fa-users-cog"></i><span>Managing Marketing Teams</span></li>
+                            <li class="course-item"><i class="fas fa-analytics"></i><span>Measuring Marketing Success</span></li>
+                        </ul>
+                        
+                        <h4>Effective Marketing Strategies</h4>
+                        <p>This course introduces essential marketing concepts, providing a solid foundation for understanding customer dynamics and creating impactful marketing strategies.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="marketing" data-difficulty="intermediate">
+                <h3><i class="fas fa-share-alt"></i> Social Media Marketing</h3>
+                <p>Learn effective strategies for marketing on various social media platforms.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 6 weeks</p>
+                    <p>Instructor: Karen Taylor</p>
+                    <p>Price: $249</p>
+                    <div class="course-overview">
+                        <h4>What is Social Media Marketing?</h4>
+                        <p>Social Media Marketing leverages platforms like Facebook, Instagram, Twitter, and LinkedIn to promote products, engage with audiences, and build brand loyalty.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-thumbs-up"></i><span>Introduction to Social Media Marketing</span></li>
+                            <li class="course-item"><i class="fas fa-facebook"></i><span>Facebook Marketing Strategies</span></li>
+                            <li class="course-item"><i class="fas fa-instagram"></i><span>Instagram Marketing Tips</span></li>
+                            <li class="course-item"><i class="fas fa-twitter"></i><span>Effective Twitter Campaigns</span></li>
+                            <li class="course-item"><i class="fas fa-linkedin"></i><span>LinkedIn Marketing and Networking</span></li>
+                            <li class="course-item"><i class="fas fa-comments"></i><span>Social Media Engagement Techniques</span></li>
+                            <li class="course-item"><i class="fas fa-calendar-alt"></i><span>Creating a Social Media Content Calendar</span></li>
+                            <li class="course-item"><i class="fas fa-share-alt"></i><span>Measuring Social Media ROI</span></li>
+                        </ul>
+                        
+                        <h4>Building Your Social Media Presence</h4>
+                        <p>This course covers strategies for building a consistent social media presence, managing multiple platforms, and using analytics to track performance and grow your audience.</p>
+                    </div>                                        
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="marketing" data-difficulty="advanced">
+                <h3><i class="fas fa-chart-line"></i> Digital Marketing Strategies</h3>
+                <p>Master advanced digital marketing techniques to drive traffic and conversions.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 10 weeks</p>
+                    <p>Instructor: Michael Johnson</p>
+                    <p>Price: $399</p>
+                    <div class="course-overview">
+                        <h4>What is Digital Marketing?</h4>
+                        <p>Digital Marketing is the process of promoting products or services using digital channels such as search engines, social media, email, and other online platforms.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-laptop"></i><span>Introduction to Digital Marketing</span></li>
+                            <li class="course-item"><i class="fas fa-search"></i><span>Search Engine Optimization (SEO)</span></li>
+                            <li class="course-item"><i class="fas fa-ad"></i><span>Pay-Per-Click (PPC) Advertising</span></li>
+                            <li class="course-item"><i class="fas fa-envelope"></i><span>Email Marketing Campaigns</span></li>
+                            <li class="course-item"><i class="fas fa-analytics"></i><span>Data Analytics and Reporting</span></li>
+                            <li class="course-item"><i class="fas fa-retargeting"></i><span>Content Marketing and Retargeting</span></li>
+                            <li class="course-item"><i class="fas fa-handshake"></i><span>Customer Acquisition and Retention</span></li>
+                            <li class="course-item"><i class="fas fa-globe"></i><span>Global Digital Marketing Strategies</span></li>
+                        </ul>
+                        
+                        <h4>Modern Marketing Tactics</h4>
+                        <p>Key tactics covered in this course include building brand awareness, creating compelling online content, and optimizing digital marketing efforts for measurable results.</p>
+                    </div>                                        
+                </div>
+                <hr class="course-divider">
+            </div>
+
+            <!-- Business Courses -->
+            <div class="course-card" data-category="business" data-difficulty="beginner">
+                <h3><i class="fas fa-briefcase"></i> Business Fundamentals</h3>
+                <p>A beginner's guide to the key concepts of business.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 5 weeks</p>
+                    <p>Instructor: Sarah Brown</p>
+                    <p>Price: $199</p>
+                    <div class="course-overview">
+                        <h4>What are Business Fundamentals?</h4>
+                        <p>Business Fundamentals cover the essential elements that are key to operating a successful business, including management, marketing, operations, and strategy.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-briefcase"></i><span>Introduction to Business Management</span></li>
+                            <li class="course-item"><i class="fas fa-bullseye"></i><span>Strategic Planning and Goal Setting</span></li>
+                            <li class="course-item"><i class="fas fa-users"></i><span>Human Resource Management</span></li>
+                            <li class="course-item"><i class="fas fa-cogs"></i><span>Operations Management</span></li>
+                            <li class="course-item"><i class="fas fa-chart-bar"></i><span>Marketing and Sales</span></li>
+                            <li class="course-item"><i class="fas fa-money-bill"></i><span>Financial Management Basics</span></li>
+                            <li class="course-item"><i class="fas fa-globe"></i><span>Global Business and Economics</span></li>
+                            <li class="course-item"><i class="fas fa-handshake"></i><span>Business Ethics and Sustainability</span></li>
+                        </ul>
+                        
+                        <h4>Core Business Principles</h4>
+                        <p>This course provides insights into fundamental business principles like leadership, business models, risk management, and operational efficiency.</p>
+                    </div>                                        
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="business" data-difficulty="intermediate">
+                <h3><i class="fas fa-chart-pie"></i> Financial Management Basics</h3>
+                <p>Learn essential financial management skills for businesses.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 6 weeks</p>
+                    <p>Instructor: David King</p>
+                    <p>Price: $249</p>
+                    <div class="course-overview">
+                        <h4>What is Financial Management?</h4>
+                        <p>Financial management involves the strategic planning, organizing, directing, and controlling of financial activities. It focuses on maximizing the organization’s wealth while minimizing risks.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-money-check-alt"></i><span>Introduction to Financial Management</span></li>
+                            <li class="course-item"><i class="fas fa-chart-line"></i><span>Financial Statement Analysis</span></li>
+                            <li class="course-item"><i class="fas fa-balance-scale"></i><span>Budgeting and Forecasting</span></li>
+                            <li class="course-item"><i class="fas fa-calculator"></i><span>Investment and Portfolio Management</span></li>
+                            <li class="course-item"><i class="fas fa-university"></i><span>Corporate Finance</span></li>
+                            <li class="course-item"><i class="fas fa-chart-pie"></i><span>Financial Risk Management</span></li>
+                            <li class="course-item"><i class="fas fa-file-invoice-dollar"></i><span>Capital Budgeting</span></li>
+                            <li class="course-item"><i class="fas fa-business-time"></i><span>Financial Decision-Making</span></li>
+                        </ul>
+                        
+                        <h4>Key Financial Concepts</h4>
+                        <p>This course will dive into crucial financial concepts like liquidity, profitability, solvency, and leverage, providing a solid foundation in finance.</p>
+                    </div>                                        
+                </div>
+                <hr class="course-divider">
+            </div>
+            <div class="course-card" data-category="business" data-difficulty="advanced">
+                <h3><i class="fas fa-cogs"></i> Operations Management</h3>
+                <p>Explore the principles of operations management for efficiency and productivity.</p>
+                <button class="toggle-details"><i class="fas fa-plus-circle"></i> Show Details</button>
+                <button class="demo-button">Try Demo</button>
+                <div class="course-details" style="display: none;">
+                    <p>Duration: 8 weeks</p>
+                    <p>Instructor: Rachel Adams</p>
+                    <p>Price: $349</p>
+                    <div class="course-overview">
+                        <h4>What is Operations Management?</h4>
+                        <p>Operations Management focuses on designing and controlling business processes to maximize efficiency, quality, and productivity within organizations.</p>
+                        
+                        <h4>Course Structure</h4>
+                        <ul>
+                            <li class="course-item"><i class="fas fa-cogs"></i><span>Introduction to Operations Management</span></li>
+                            <li class="course-item"><i class="fas fa-box"></i><span>Supply Chain Management</span></li>
+                            <li class="course-item"><i class="fas fa-tasks"></i><span>Process Design and Optimization</span></li>
+                            <li class="course-item"><i class="fas fa-chart-pie"></i><span>Production Planning and Scheduling</span></li>
+                            <li class="course-item"><i class="fas fa-dolly"></i><span>Inventory Management Techniques</span></li>
+                            <li class="course-item"><i class="fas fa-chart-bar"></i><span>Quality Control and Improvement</span></li>
+                            <li class="course-item"><i class="fas fa-hand-holding-usd"></i><span>Cost Management Strategies</span></li>
+                            <li class="course-item"><i class="fas fa-users"></i><span>Workforce Management</span></li>
+                        </ul>
+                        
+                        <h4>Efficient Business Processes</h4>
+                        <p>This course teaches the essentials of operations management, focusing on improving business processes to ensure high-quality, cost-effective production and delivery.</p>
+                    </div>                                                            
+                </div>
+                <hr class="course-divider">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Explore Our Courses -->
+
+<section id="courses">
+    <div class="container">
+        <h2 class="section-title">Explore Our Courses</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="icon-container">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Learn how to build websites from scratch.</p>
+                <button class="start-course">Start Course</button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar-web-dev"></div>
+                </div>
+                <div class="rating-container" data-course-id="web-development">
+                    <div class="stars">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <textarea class="review-input" placeholder="Leave your review..."></textarea>
+                    <button class="submit-review">Submit Review</button>
+                    <div class="review-list"></div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="icon-container">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>Database Design</h3>
+                <p>Master database architecture and SQL.</p>
+                <button class="start-course">Start Course</button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar-database-design"></div>
+                </div>
+                <div class="rating-container" data-course-id="database-design">
+                    <div class="stars">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <textarea class="review-input" placeholder="Leave your review..."></textarea>
+                    <button class="submit-review">Submit Review</button>
+                    <div class="review-list"></div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="icon-container">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Machine Learning</h3>
+                <p>Dive into AI and machine learning.</p>
+                <button class="start-course">Start Course</button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar-machine-learning"></div>
+                </div>
+                <div class="rating-container" data-course-id="machine-learning">
+                    <div class="stars">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <textarea class="review-input" placeholder="Leave your review..."></textarea>
+                    <button class="submit-review">Submit Review</button>
+                    <div class="review-list"></div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="icon-container">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Data Science</h3>
+                <p>Unlock the power of data and analytics.</p>
+                <button class="start-course">Start Course</button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar-data-science"></div>
+                </div>
+                <div class="rating-container" data-course-id="data-science">
+                    <div class="stars">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <textarea class="review-input" placeholder="Leave your review..."></textarea>
+                    <button class="submit-review">Submit Review</button>
+                    <div class="review-list"></div>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="icon-container">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>Networking Fundamentals</h3>
+                <p>Learn the basics of networking and communication.</p>
+                <button class="start-course">Start Course</button>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar-networking"></div>
+                </div>
+                <div class="rating-container" data-course-id="networking">
+                    <div class="stars">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <textarea class="review-input" placeholder="Leave your review..."></textarea>
+                    <button class="submit-review">Submit Review</button>
+                    <div class="review-list"></div>
+                </div>
+            </div>
+            <!-- Add more courses as needed -->
+        </div>
+    </div>
+</section>
+
+      </main>
+      
+
+  <script src="scripts.js"></script>
+  <!-- Include GSAP Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+<!-- Include Lottie player -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+</body>
+</html>

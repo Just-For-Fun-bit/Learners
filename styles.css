@@ -1,0 +1,1369 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  --bg-color: #f7f7f7; /* Light mode background color */
+  --text-color: rgb(0, 0, 0); /* Light mode text color */
+  --header-bg: #ffffff; /* Light mode header background */
+  --navbar-bg: #ffffff; /* Light mode navbar background */
+  --link-color: rgb(0, 0, 0); /* Light mode link color */
+  --hover-color: #f39c12; /* Light mode hover color */
+}
+
+body[data-theme='dark'] {
+  --bg-color: #181818; /* Dark mode background color */
+  --text-color: #f7f7f7; /* Dark mode text color */
+  --header-bg: #252525; /* Dark mode header background */
+  --navbar-bg: #252525; /* Dark mode navbar background */
+  --link-color: #f7f7f7; /* Dark mode link color */
+  --hover-color: #f39c12; /* Dark mode hover color */
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--header-bg);
+}
+
+/* Logo */
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  fill: var(--logo-color);
+}
+
+/* Navigation Menu */
+.navbar {
+  position: relative;
+}
+
+.nav-menu {
+  display: flex;
+  list-style-type: none;
+  transition: transform 0.3s ease;
+}
+
+/* Navigation Items */
+.nav-item {
+  margin-left: 22px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: var(--link-color);
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: var(--hover-color);
+}
+
+/* Submenu */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 1;
+  background-color: var(--navbar-bg);
+  box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+}
+
+.submenu li {
+  padding: 10px;
+}
+
+.submenu li a {
+  color: var(--text-color);
+}
+
+.submenu li a:hover {
+  color: var(--hover-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px 15px; /* Vertical and horizontal padding */
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  margin: 4px 0;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .nav-menu {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      background-color: var(--navbar-bg);
+      flex-direction: column;
+      transform: translateX(-100%);
+  }
+
+  .nav-item {
+      text-align: center;
+      margin: 10px 0;
+  }
+
+  .hamburger {
+      display: flex;
+  }
+
+  .active {
+      transform: translateX(0);
+  }
+
+  .dropdown .submenu {
+      position: static;
+  }
+}
+
+/* Show Submenu on Hover for Larger Screens */
+@media (min-width: 768px) {
+  .dropdown:hover .submenu {
+      display: block;
+  }
+}
+
+/* Enhanced Navigation Menu Styles */
+.navbar {
+  position: relative;
+  z-index: 1000; /* Ensure navbar is above other elements */
+}
+
+/* Responsive Styling for Nav Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.submenu {
+  display: none; /* Keep submenus hidden by default */
+}
+
+.dropdown .submenu.show {
+  display: block; /* Show submenu when active */
+}
+
+/* Hamburger Menu Styling */
+.hamburger {
+  display: none; /* Hidden on larger screens */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
+  margin: 4px 0;
+}
+
+/* Hamburger Menu Transition */
+.nav-menu.active {
+  transform: translateX(0); /* Slide-in effect */
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+      display: none; /* Hide by default on small screens */
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      background-color: var(--navbar-bg);
+      flex-direction: column;
+      transform: translateX(-100%);
+  }
+
+  .nav-menu.active {
+      display: flex; /* Show menu when active */
+      transform: translateX(0); /* Slide-in effect */
+  }
+
+  .hamburger {
+      display: flex; /* Show hamburger on mobile */
+  }
+}
+
+/* Accessibility Improvements */
+.nav-item[tabindex="0"]:focus {
+  outline: 2px solid var(--hover-color); /* Highlight focused item */
+}
+
+/* Search Bar Styles */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 9px; /* Space from the left */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Allow clicks to pass through to input */
+}
+
+.search-input {
+  transition: width 0.6s ease;
+  width: 200px; /* Default width */
+  padding: 10px 40px 10px 30px; /* Add padding to the right for the clear button */
+  border: 1px solid var(--text-color);
+  border-radius: 25px;
+  background-color: var(--navbar-bg); /* Match input background */
+  color: var(--text-color); /* Match input text color */
+}
+
+.search-input:focus {
+  width: 240px; /* Expanded width */
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+.clear-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #999;
+  position: absolute;
+  right: 10px; /* Space from the right */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px; /* Size of the clear icon */
+  display: none; /* Hidden by default */
+}
+
+.clear-button:hover {
+  color: #f00; /* Change color on hover */
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%; /* Position below the input */
+  left: 0;
+  right: 0;
+  background: var(--navbar-bg); /* Match suggestions background */
+  border: 1px solid #ccc;
+  border-radius: 0 0 25px 25px;
+  max-height: 200px; /* Maximum height for the suggestions */
+  overflow-y: auto; /* Scroll if there are too many suggestions */
+  z-index: 1000; /* Ensure suggestions appear above other elements */
+}
+
+.suggestions li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  display: flex;
+  align-items: center; /* Center align the toggle */
+  cursor: pointer; /* Pointer on hover */
+  margin-left: 20px; /* Space between search and toggle */
+}
+
+.theme-toggle input {
+  display: none; /* Hide the default checkbox */
+}
+
+.toggle-label {
+  width: 50px; /* Width of the toggle */
+  height: 25px; /* Height of the toggle */
+  background-color: #ccc; /* Background color for inactive state */
+  border-radius: 25px; /* Rounded corners */
+  position: relative; /* Position relative for the slider */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.toggle-label:before {
+  content: '';
+  position: absolute;
+  width: 21px; /* Width of the slider */
+  height: 21px; /* Height of the slider */
+  background-color: white; /* Color of the slider */
+  border-radius: 50%; /* Make it circular */
+  transition: transform 0.3s ease; /* Smooth transition for slider movement */
+}
+
+.theme-toggle input:checked + .toggle-label {
+  background-color: #007bff; /* Background color for active state */
+}
+
+.theme-toggle input:checked + .toggle-label:before {
+  transform: translateX(25px); /* Move the slider to the right */
+}
+
+/* Accessibility Styles */
+.theme-toggle input:focus + .toggle-label {
+  outline: 2px solid #f39c12; /* Highlight toggle on focus */
+}
+
+
+
+  /* Add this CSS to your styles.css file */
+  .hero {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Text color */
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)); /* Gradient overlay */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Keep video behind the content */
+}
+
+.video-bg {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* Cover the entire section */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    z-index: 1; /* Place overlay above the video */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Bring content above the overlay */
+    padding: 20px;
+    backdrop-filter: blur(10px); /* Enhanced blur for better readability */
+    border-radius: 15px; /* Rounded corners */
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size */
+    margin-bottom: 1rem;
+    animation: fadeIn 1s ease-in; /* Fade-in animation */
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem); /* Responsive font size */
+    margin-bottom: 2rem;
+    animation: fadeIn 1.5s ease-in; /* Fade-in animation with delay */
+}
+
+.hero-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.icon {
+    font-size: 2rem; /* Icon size */
+    margin: 0 1rem; /* Spacing between icons */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth scale and color on hover */
+}
+
+.icon:hover {
+    transform: scale(1.2); /* Scale up on hover */
+    color: #ff6b81; /* Change color on hover */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #ff4757; /* Call-to-action color */
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    cursor: pointer; /* Pointer cursor for button */
+}
+
+.cta-button:hover {
+    background-color: #ff6b81; /* Darker shade on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Slide from above */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* about section */
+body {
+    font-family: 'Roboto', sans-serif; /* Custom font */
+    background: linear-gradient(135deg, #f0f3f4, #c9d6e3); /* Unique gradient background */
+    color: #333; /* Text color */
+}
+
+.about-section {
+    padding: 60px 20px; /* Padding for the section */
+    text-align: center; /* Center align text */
+}
+
+.about-title {
+    margin-bottom: 40px; /* Space below heading */
+    font-size: 2.5rem; /* Large heading */
+    color: #ffffff9c; /* Dark heading color */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    text-shadow: 3px 3px 6px rgba(122, 130, 139, 0.592); /* Shadow for depth */
+    position: relative; /* Positioning for 3D effect */
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around; /* Space between cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    opacity: 0; /* Start hidden for fade-in effect */
+    transition: opacity 0.5s ease; /* Fade-in transition */
+    background-color: #ffffff; /* A light, unique color (change as needed) */
+    border-radius: 12px; /* Optional: adds rounded corners */
+    padding: 20px; /* Adds some padding for better spacing */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow for depth */
+}
+
+.card {
+    background: #ffffff; /* Card background */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 142, 250, 0.531); /* Card shadow */
+    padding: 40px; /* Increased padding for card */
+    margin: 20px; /* Space between cards */
+    width: calc(30% - 40px); /* Width for cards */
+    text-align: center; /* Center text in cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transitions for effects */
+    position: relative; /* For hover effect */
+    overflow: hidden; /* Hide overflow */
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 20px 40px rgba(0, 142, 250, 0.531); /* Increased shadow on hover */
+    background-color: #2fb6eb7d; /* Light background on hover */
+}
+
+.icon {
+    font-size: 60px; /* Increased icon size */
+    margin-bottom: 15px; /* Space between icon and title */
+    color: #2980b9; /* Icon color */
+    transition: color 0.3s; /* Color transition */
+}
+
+.card-title {
+    margin-bottom: 15px; /* Space below title */
+    font-size: 1.8rem; /* Title size */
+    color: #4674a3; /* Title color */
+    text-transform: uppercase; /* Uppercase for emphasis */
+}
+
+.card-title:hover {
+    color: #ff6b81; /* Change color on hover */
+}
+
+.card p {
+    color: #301616; /* Text color for paragraphs */
+    line-height: 1.6; /* Improved line height for readability */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card {
+        width: calc(45% - 40px); /* Adjust width for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%; /* Full width on mobile */
+    }
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* 3D HR Style */
+.hr-3d {
+    border: none;
+    height: 10px;
+    background: linear-gradient(135deg, #85d3ec, #d5e9e6);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3), inset 0px 1px 1px rgb(86, 225, 246);
+    border-radius: 5px;
+    margin: 0px 0;
+}
+
+/* Our Services */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #2c3e50, #34495e);
+  color: #333;
+  overflow-x: hidden;
+}
+
+#backgroundCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.icon-animation-section {
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.section-title {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  color: #ecf0f1;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 6px rgba(255, 255, 255, 0.192);
+}
+
+.icon-gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#icon-animation .icon-container {
+  position:relative;
+  margin: 15px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  background-color: #ffffff;
+  padding: 30px 15px;
+  width: calc(50% - 30px);
+  max-width: 400px;
+  height: auto;
+}
+
+.icon-container:hover {
+  transform: translateY(-5px);
+}
+
+.icon-wrapper {
+  font-size: 3rem;
+  color: #3498db;
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.icon-container:hover .icon-wrapper {
+  transform: scale(1.2);
+}
+
+.caption {
+  margin-top: 15px;
+  color: #333;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+
+.icon-container:hover .caption {
+  opacity: 1;
+}
+
+.additional-info {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #fff;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 768px) {
+  .icon-container {
+      width: calc(100% - 30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+      font-size: 2rem;
+  }
+}
+
+/* Global reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  background-color: #f0f4f8; /* Lighter background for a softer look */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Isolated Filter Section Styling */
+#course-filter-section {
+  background: linear-gradient(135deg, #8cbee5, #76a6d8);
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Slightly softer shadow */
+  border-radius: 12px;
+  position: relative; /* For positioning pseudo-elements */
+  overflow: hidden; /* Prevent overflow from pseudo-elements */
+}
+
+#course-filter-section h2 {
+  font-size: 2.2rem; /* Larger font size for headings */
+  margin-bottom: 30px;
+  color: #fff; /* White text for contrast */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Soft shadow for text */
+}
+
+.filter-wrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 30px; /* Add space below the filter wrapper */
+}
+
+.filter-container {
+  position: relative;
+  max-width: 250px; /* Restricts width for better appearance */
+  flex: 1 1 auto; /* Allows for flexible width */
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #fff; /* White text for visibility */
+}
+
+select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 4px solid #397dc6; /* White border for contrast */
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem; /* Use relative units for responsiveness */
+  width: 100%; /* Full width to prevent overflow */
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #76a6d8; /* Highlighted border on focus */
+  box-shadow: 0 0 8px rgba(140, 190, 229, 0.6);
+  outline: none;
+}
+
+#reset-filters {
+  padding: 12px 24px;
+  background-color: #ffffff; /* White background for button */
+  color: #424e58; /* Text color matching the filter section */
+  border: 4px solid #397dc6; /* White border for contrast */
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem; /* Use relative units for responsiveness */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: bold; /* Bold text for emphasis */
+  margin-top: 20px; /* Add margin on top to separate from filters */
+}
+
+#reset-filters:hover {
+  background-color: #e0e0e0; /* Light gray on hover */
+  box-shadow: 0 0 10px rgba(140, 190, 229, 0.4); /* Shadow on hover */
+}
+
+#reset-filters:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(140, 190, 229, 0.6);
+}
+
+/* Divider Styling */
+.divider {
+  width: 80%;
+  margin: 40px auto;
+  border: 0;
+  height: 2px;
+  background-color: #ffffff;
+}
+
+.toggle-details {
+  background-color: #3993d8;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px 40px 10px 30px; /* Adjust padding to make space for the icon */
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  position: relative; /* Ensure the position of the icon is relative */
+}
+
+.toggle-details i {
+  position: absolute; /* Position the icon absolutely */
+  left: 10px; /* Adjust left position */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.toggle-details:hover {
+  background-color: #76a4c6;
+}
+
+.course-details {
+  padding: 10px;
+  background-color: #e3f2fd;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Icon Styling */
+.course-card {
+  text-align: center; /* Center-align the course card content */
+}
+
+.course-card h3 {
+  display: flex;
+  justify-content: center; /* Center-aligns icon and text */
+  align-items: center; /* Vertically centers the icon and text */
+  margin: 0; /* Reset margin for the heading */
+}
+
+.course-card h3 i {
+  margin-right: 10px; /* Adjusts space between icon and text */
+}
+
+/* Default hidden state for course container */
+#course-container {
+  display: none; /* Hide the course container by default */
+}
+
+
+
+
+/* Responsive design for filter section */
+@media (max-width: 768px) {
+  .filter-wrapper {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  select {
+      max-width: none; /* Remove max-width to allow full responsiveness */
+  }
+}
+
+
+
+/* Course Section Styling */
+#courses {
+  padding: 40px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+
+
+/* Toggle Button Styles */
+.toggle-button {
+  background-color: #8cbee5; /* Light background color */
+  color: #ffffff; /* White text color */
+  border: none; /* No border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for better touch area */
+  cursor: pointer; /* Change cursor to pointer */
+  font-size: 16px; /* Font size */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), 
+              -4px -4px 10px rgba(255, 255, 255, 0.7); /* Neumorphism shadow */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for effects */
+}
+
+/* Hover Effect */
+.toggle-button:hover {
+  background-color: #7cbfd9; /* Darken background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Active Effect */
+.toggle-button:active {
+  background-color: #6bb8e2; /* Darker background when active */
+  transform: translateY(1px); /* Slight push down effect */
+}
+
+/* Toggle Course Container Style */
+#course-container {
+  margin-top: 20px; /* Space between button and course list */
+  padding: 20px; /* Padding around course list */
+  border-radius: 10px; /* Rounded corners */
+  background: #f0f4f8; /* Light background for the container */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  transition: max-height 0.5s ease; /* Smooth transition for height changes */
+}
+
+
+
+.course-card {
+  width: 100%;
+  max-width: 600px; /* Ensures a maximum width */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 5px solid #8cbee5; /* Stylish left border */
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.course-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem; /* Use relative units for better scaling */
+  color: #333;
+}
+
+.course-card p {
+  font-size: 1rem; /* Use relative units for better scaling */
+  color: #666;
+}
+
+
+/* courses card list */
+
+.course-overview {
+  background-color: #f5f7fa; /* Soft light background for a modern look */
+  border-radius: 16px; /* Slightly more rounded corners */
+  padding: 35px; /* Ample padding for a spacious layout */
+  margin: 24px 0; /* Consistent margin for spacing between elements */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12); /* More prominent shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+  position: relative; /* For pseudo-element positioning */
+  overflow: hidden; /* Prevent overflow of child elements */
+  font-family: 'Arial', sans-serif; /* Modern font for readability */
+}
+
+.course-overview:hover {
+  transform: translateY(-7px) rotateZ(1deg); /* Subtle lift and rotation effect */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25); /* Enhanced shadow for more depth */
+  background-color: #ffffff; /* Change background color on hover */
+  border: 1px solid #4a90e2; /* Add border on hover for emphasis */
+}
+
+.course-overview h4 {
+  font-size: 1.85em; /* Slightly larger for emphasis */
+  color: #333; /* Dark color for text */
+  margin-bottom: 20px; /* Consistent spacing below headings */
+  border-bottom: 2px solid #4a90e2; /* Subtle underline for headings */
+  padding-bottom: 8px; /* Padding for clear separation */
+  font-weight: bold; /* Strong emphasis */
+  letter-spacing: 0.5px; /* Slight letter spacing for better readability */
+  text-transform: uppercase; /* Uppercase for a stronger presence */
+  position: relative; /* Position for text shadow */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth color transition */
+}
+
+.course-overview:hover h4 {
+  color: #4a90e2; /* Change heading color on hover */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add text shadow on hover */
+}
+
+.course-overview p {
+  font-size: 1.15em; /* Slightly larger font size */
+  color: #555; /* Softer dark color */
+  line-height: 1.8; /* Improved readability with better spacing */
+  margin-bottom: 22px; /* Spacing between paragraphs */
+  position: relative; /* Position for pseudo-elements */
+  transition: transform 0.3s ease; /* Smooth transform transition */
+}
+
+.course-overview p:hover {
+  transform: translateY(-2px); /* Subtle lift effect on hover */
+}
+
+.course-structure {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Increased spacing between items for cleaner design */
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  padding: 12px; /* Slightly larger padding */
+  border-radius: 10px; /* More rounded corners for modern look */
+  background-color: #fff; /* White background for contrast */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+  cursor: pointer; /* Indicate interactivity */
+  overflow: hidden; /* Prevent overflow of child elements */
+}
+
+.course-item:hover {
+  background-color: #e0f7fa; /* Light blue hover effect */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Enhance shadow effect */
+}
+
+.course-item i {
+  color: #2b9de4; /* Blue color for icons */
+  margin-right: 12px; /* Space between icon and text */
+  font-size: 1.3em; /* Larger icon size */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth icon scaling and color transition */
+}
+
+.course-item:hover i {
+  transform: scale(1.1) rotate(10deg); /* Scale and rotate icon slightly on hover */
+  color: #357a38; /* Change icon color on hover */
+}
+
+.course-item span {
+  color: #444; /* Softer color for course item text */
+  font-size: 1.05em; /* Slightly larger for readability */
+  font-weight: 500; /* Medium weight for emphasis */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth color transition */
+}
+
+.course-item:hover span {
+  color: #333; /* Darker text color on hover */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* Text shadow on hover */
+}
+
+.course-overview ul {
+  list-style: none; /* Remove default list styling */
+  padding-left: 0; /* Remove padding */
+  margin-bottom: 20px; /* Space below lists */
+}
+
+.course-overview li {
+  position: relative;
+  padding-right: 40px; /* Space for the icon */
+  margin-bottom: 14px; /* Spacing between list items */
+  font-size: 1.1em; /* Slightly larger font size */
+  color: #444; /* Consistent text color */
+  display: flex; /* Flex layout for item alignment */
+  align-items: center; /* Vertical centering */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transform on hover */
+}
+
+.course-overview li:hover {
+  color: #4a90e2; /* Change text color on hover */
+  transform: translateX(5px) scale(1.02); /* Slight slide and scale effect */
+}
+
+.course-overview li::after {
+  content: '🎓'; /* Graduation cap icon */
+  position: absolute;
+  right: 0; /* Align the icon to the right */
+  top: 50%; /* Vertically center the icon */
+  transform: translateY(-50%); /* Ensure perfect vertical centering */
+  font-size: 1.3em; /* Slightly larger icon */
+  color: #4CAF50; /* Green icon color */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth color and scale transition on hover */
+}
+
+.course-overview li:hover::after {
+  color: #357a38; /* Darker green on hover */
+  transform: translateY(-50%) scale(1.2) rotate(20deg); /* Scale and rotate the icon on hover */
+}
+
+.course-overview code {
+  background-color: #eef5ff; /* Softer light blue for code blocks */
+  padding: 4px 8px; /* Extra padding for code readability */
+  border-radius: 6px; /* More rounded corners */
+  font-family: 'Courier New', monospace; /* Monospace font for code */
+  color: #222; /* Darker color for better contrast */
+  font-size: 1em; /* Consistent font size */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Inner shadow for emphasis */
+  display: inline-block; /* Ensure proper display inline */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth background and scale transition */
+}
+
+.course-overview code:hover {
+  background-color: #d1e7ff; /* Light blue background on hover for visibility */
+  transform: scale(1.05) rotate(3deg); /* Slightly scale and rotate code block on hover */
+}
+
+/* Add a subtle background pattern for visual interest */
+.course-overview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05); /* Light overlay */
+  border-radius: 16px; /* Match the border radius */
+  pointer-events: none; /* Prevent interaction */
+  z-index: 0; /* Place behind content */
+  animation: pulse 5s infinite; /* Pulsing effect for background */
+}
+
+/* Keyframes for pulsing effect */
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.02);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
+
+/* Focus styles for accessibility */
+.course-overview li:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px rgba(75, 144, 226, 0.5); /* Custom focus style */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .course-overview {
+      padding: 20px; /* Reduced padding on smaller screens */
+  }
+
+  .course-overview h4 {
+      font-size: 1.6em; /* Smaller heading on mobile */
+  }
+
+  .course-overview p {
+      font-size: 1em; /* Smaller paragraph text */
+  }
+
+  .course-item {
+      padding: 10px; /* Reduced padding on items */
+  }
+}
+
+
+
+hr.course-divider {
+  margin: 20px 0;
+  border: 0;
+  height: 1px;
+  background-color: #ddd;
+}
+
+.demo-button {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  border: none; /* No border */
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 1em; /* Font size */
+  transition: background-color 0.3s; /* Smooth background color change */
+  display: inline-block; /* Align with text */
+  margin-top: 10px; /* Space above the button */
+}
+
+.demo-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* Responsive design for course cards */
+@media (max-width: 768px) {
+  #courses {
+      padding: 20px;
+  }
+
+  .course-card {
+      width: 100%; /* Ensure full width on mobile */
+      padding: 15px; /* Adjust padding for better fit */
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+  #courses {
+      padding: 60px;
+  }
+
+  .course-card {
+      padding: 30px;
+  }
+}
+
+
+/* Our Courses */
+/* Scoped to the Courses Section */
+#courses {
+  padding: 60px 0;
+  position: relative;
+}
+
+#courses .container {
+  background-color: #ffffff; /* A light, unique color */
+  border-radius: 12px; /* Rounded corners */
+  padding: 20px; /* Padding for better spacing */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  overflow-wrap: break-word; /* Prevents text overflow */
+  word-wrap: break-word; /* Ensures long words break properly */
+  hyphens: auto; /* Enables hyphenation */
+  text-align: justify; /* Optional: aligns text for better readability */
+  transition: all 0.3s ease; /* Smooth transition for size changes */
+  width: 100%; /* Full width initially */
+}
+
+#courses .section-title {
+  font-size: 3rem;
+  color: #0d47a1;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* 3D text effect */
+}
+
+#courses .course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+#courses .course-card {
+  width: 100%; /* Full width for all screen sizes */
+  background-color: #8cbee5;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle 3D shadow effect */
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth transition for size changes */
+  font-family: 'Roboto', sans-serif;
+}
+
+#courses .course-card:hover {
+  transform: scale(1.05); /* Lift effect on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+#courses .icon-container {
+  font-size: 4rem;
+  color: #020e1693;
+  margin: 15px 0;
+  padding: 30px 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Ensures full width for the container */
+  height: auto;
+}
+
+#courses .course-card:hover .icon-container {
+  transform: rotate(10deg); /* Rotate icons slightly on hover */
+}
+
+#courses h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#courses p {
+  font-size: 1rem;
+  color: #666;
+}
+
+#courses .start-course {
+  background-color: #0d47a1;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+#courses .start-course:hover {
+  background-color: #1565c0;
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Scoped Click Effect within Courses Section */
+#courses .click-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  animation: click-animation 0.6s ease-out forwards;
+}
+
+@keyframes click-animation {
+  0% {
+      transform: scale(0);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(4);
+      opacity: 0;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #courses .container, 
+  #courses .course-card {
+    width: 90%; /* Reduce width slightly on smaller screens */
+    padding: 20px; /* Adjust padding for smaller containers */
+  }
+}
+
+@media (max-width: 576px) {
+  #courses .container, 
+  #courses .course-card {
+    width: 85%; /* Further reduce width on very small screens */
+    padding: 15px; /* Ensure padding is appropriate for smaller sizes */
+  }
+}
+
+@media (max-width: 400px) {
+  #courses .container, 
+  #courses .course-card {
+    width: 80%; /* Compact size on the smallest screens */
+    padding: 10px; /* Ensure readability while conserving space */
+  }
+}
+
+/* Progress Bar Styles */
+.progress-container {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0; /* Light gray background */
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #0d47a1; /* Blue color for the progress */
+  width: 0%; /* Start at 0% */
+  transition: width 0.5s ease; /* Smooth transition */
+}
+
+.rating-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.stars {
+  cursor: pointer;
+  font-size: 20px;
+  color: gold;
+  display: flex;
+}
+
+.star {
+  transition: transform 0.2s, color 0.2s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.review-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submit-review {
+  margin-top: 5px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.submit-review:hover {
+  background-color: #0056b3;
+}
+
+.review-list {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.review-item {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  margin-top: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
